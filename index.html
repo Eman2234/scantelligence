@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScanTelligence | Administrator Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Mobile Sidebar Overlay -->
+  <div id="mobileOverlay" class="mobile-overlay"></div>
+
+  <div id="loginScreen" class="login-screen">
+    <div class="login-grid"></div>
+    <div class="login-card">
+      <div class="brand-mark">ST</div>
+      <div class="eyebrow">AUTOMATED CAMPUS MONITORING</div>
+      <h1>Scan<span>Telligence</span></h1>
+      <p class="muted">Administrator Console</p>
+
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="admin" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+          <button type="button" class="icon-btn" id="togglePassword">◉</button>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" id="rememberMe">
+          <span>Remember me</span>
+        </label>
+
+        <button class="primary-btn full" type="submit">ENTER CONSOLE</button>
+        <div id="loginMessage" class="form-message"></div>
+      </form>
+
+      <div class="login-status"><span class="status-dot online"></span> Prototype system ready</div>
+      <p class="demo-note">Demo login: <b>admin</b> / <b>admin123</b></p>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar">
+      
+      <!-- ST Logo in the Sidebar -->
+      <div class="sidebar-logo">
+        <div class="brand-mark small">ST</div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-page="presence"><span>◉</span> Campus Presence</button>
+        <button class="nav-item" data-page="scans"><span>▣</span> Scan Records</button>
+        <button class="nav-item" data-page="hours"><span>◷</span> Campus Hours</button>
+        <button class="nav-item" data-page="schedules"><span>▤</span> Class Schedules</button>
+        <button class="nav-item" data-page="requirements"><span>⚠</span> Requirements</button>
+        <button class="nav-item" data-page="sms"><span>✉</span> SMS Notifications</button>
+        <button class="nav-item" data-page="search"><span>⌕</span> Search Students</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="system-mini">
+          <span class="status-dot online"></span>
+          <div>
+            <strong>System Online</strong>
+            <small>All services operational</small>
+          </div>
+        </div>
+        <button id="logoutBtn" class="logout-btn">↪ Log Out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <!-- Left Area: Menu Toggle & Title -->
+        <div class="topbar-left">
+          <button id="menuToggle" class="menu-toggle">☰</button>
+          <div>
+            <div class="eyebrow" id="pageEyebrow">LIVE MONITORING</div>
+            <h2 id="pageTitle">Campus Dashboard</h2>
+          </div>
+        </div>
+
+        <!-- Center Area: Branding Text Only -->
+        <div class="topbar-center">
+          <div class="brand-text">
+            <strong>ScanTelligence</strong>
+            <small>ADMIN CONSOLE</small>
+          </div>
+        </div>
+
+        <!-- Right Area: Actions -->
+        <div class="top-actions">
+          <div class="sync-pill">
+            <span class="status-dot online"></span> 
+            <span class="hide-mobile">Live Sync</span> 
+            <span id="syncTime">--:--:--</span>
+          </div>
+          <div class="admin-chip">
+            <span class="avatar">A</span>
+            <span class="hide-mobile">Administrator</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="page-dashboard" class="page active-page"></section>
+      <section id="page-presence" class="page"></section>
+      <section id="page-scans" class="page"></section>
+      <section id="page-hours" class="page"></section>
+      <section id="page-schedules" class="page"></section>
+      <section id="page-requirements" class="page"></section>
+      <section id="page-sms" class="page"></section>
+      <section id="page-search" class="page"></section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
