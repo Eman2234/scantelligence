@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScanTelligence | Administrator Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-grid"></div>
+    <div class="login-card">
+      <div class="brand-mark">ST</div>
+      <div class="eyebrow">AUTOMATED CAMPUS MONITORING</div>
+      <h1>Scan<span>Telligence</span></h1>
+      <p class="muted">Administrator Console</p>
+
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="admin" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+          <button type="button" class="icon-btn" id="togglePassword">◉</button>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" id="rememberMe">
+          <span>Remember me</span>
+        </label>
+
+        <button class="primary-btn full" type="submit">ENTER CONSOLE</button>
+        <div id="loginMessage" class="form-message"></div>
+      </form>
+
+      <div class="login-status"><span class="status-dot online"></span> Prototype system ready</div>
+      <p class="demo-note">Demo login: <b>admin</b> / <b>admin123</b></p>
+    </div>
+  </div>
+
+  <!-- MAIN APP CONSOLE -->
+  <div id="app" class="app hidden">
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="side-brand">
+        <div class="brand-mark small">ST</div>
+        <div>
+          <strong>ScanTelligence</strong>
+          <small>ADMIN CONSOLE</small>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-page="presence"><span>◉</span> Campus Presence</button>
+        <button class="nav-item" data-page="scans"><span>▣</span> Scan Records</button>
+        <button class="nav-item" data-page="hours"><span>◷</span> Campus Hours</button>
+        <button class="nav-item" data-page="schedules"><span>▤</span> Class Schedules</button>
+        <button class="nav-item" data-page="requirements"><span>⚠</span> Requirements</button>
+        <button class="nav-item" data-page="sms"><span>✉</span> SMS Notifications</button>
+        <button class="nav-item" data-page="search"><span>⌕</span> Search Students</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="system-mini">
+          <span class="status-dot online"></span>
+          <div>
+            <strong>System Online</strong>
+            <small>All services operational</small>
+          </div>
+        </div>
+        <button id="logoutBtn" class="logout-btn">⇆ Log Out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="menuToggle" class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+          <div>
+            <div class="eyebrow" id="pageEyebrow">LIVE MONITORING</div>
+            <h2 id="pageTitle">Campus Dashboard</h2>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="sync-pill"><span class="status-dot online"></span> Live Sync <span id="syncTime">--:--:--</span></div>
+          <div class="admin-chip"><span class="avatar">A</span><span>Administrator</span></div>
+        </div>
+      </header>
+
+      <!-- Dashboard Page -->
+      <section id="page-dashboard" class="page active-page">
+        <!-- Metric Cards Grid -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-label">CURRENTLY INSIDE</span>
+            <div class="metric-value green">6</div>
+            <span class="metric-sub">Live campus presence</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">TODAY'S SCANS</span>
+            <div class="metric-value blue">9</div>
+            <span class="metric-sub">Time In + Time Out</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">CAMPUS HOURS</span>
+            <div class="metric-value cyan">14h 42m</div>
+            <span class="metric-sub">Completed visits today</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">LACKING REQUIREMENTS</span>
+            <div class="metric-value yellow">3</div>
+            <span class="metric-sub">Students requiring attention</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">CLASSES MONITORED</span>
+            <div class="metric-value blue">5</div>
+            <span class="metric-sub">Students currently inside</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">SMS TODAY</span>
+            <div class="metric-value green">3</div>
+            <span class="metric-sub">Notification records</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Content Grid -->
+        <div class="dashboard-grid">
+          <!-- Currently Inside Table Card -->
+          <div class="card table-card">
+            <div class="card-header">
+              <div>
+                <h3>Currently Inside Campus</h3>
+                <p class="muted">Automatically updated from scanner transactions</p>
+              </div>
+              <span class="badge green">● 6 ACTIVE</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>STATUS</th>
+                    <th>STUDENT</th>
+                    <th>ID</th>
+                    <th>TIME IN</th>
+                    <th>CAMPUS DURATION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Alex Rivera</strong></td>
+                    <td>STU-001</td>
+                    <td>07:42 AM</td>
+                    <td>02h 18m</td>
+                  </tr>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Bianca Santos</strong></td>
+                    <td>STU-002</td>
+                    <td>08:05 AM</td>
+                    <td>01h 55m</td>
+                  </tr>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Carlos Mendoza</strong></td>
+                    <td>STU-003</td>
+                    <td>08:17 AM</td>
+                    <td>01h 43m</td>
+                  </tr>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Ethan Reyes</strong></td>
+                    <td>STU-005</td>
+                    <td>09:01 AM</td>
+                    <td>00h 59m</td>
+                  </tr>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Gabriel Lim</strong></td>
+                    <td>STU-007</td>
+                    <td>08:44 AM</td>
+                    <td>01h 16m</td>
+                  </tr>
+                  <tr>
+                    <td><span class="status-pill inside">● INSIDE</span></td>
+                    <td><strong>Ivan Torres</strong></td>
+                    <td>STU-009</td>
+                    <td>09:12 AM</td>
+                    <td>00h 48m</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Lacking Requirements Side Card -->
+          <div class="card side-card">
+            <div class="card-header">
+              <div>
+                <h3>Students With Lacking Requirements</h3>
+                <p class="muted">View-only validation monitoring</p>
+              </div>
+              <span class="badge yellow">3 STUDENTS</span>
+            </div>
+            <div class="student-list">
+              <div class="student-item">
+                <div class="student-info">
+                  <strong>Carlos Mendoza</strong>
+                  <small>STU-003 • 2 lacking requirements</small>
+                </div>
+                <button class="btn-action">VIEW</button>
+              </div>
+              <div class="student-item">
+                <div class="student-info">
+                  <strong>Faith Garcia</strong>
+                  <small>STU-006 • 1 lacking requirement</small>
+                </div>
+                <button class="btn-action">VIEW</button>
+              </div>
+              <div class="student-item">
+                <div class="student-info">
+                  <strong>Hannah Flores</strong>
+                  <small>STU-008 • 1 lacking requirement</small>
+                </div>
+                <button class="btn-action">VIEW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-presence" class="page hidden"></section>
+      <section id="page-scans" class="page hidden"></section>
+      <section id="page-hours" class="page hidden"></section>
+      <section id="page-schedules" class="page hidden"></section>
+      <section id="page-requirements" class="page hidden"></section>
+      <section id="page-sms" class="page hidden"></section>
+      <section id="page-search" class="page hidden"></section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
